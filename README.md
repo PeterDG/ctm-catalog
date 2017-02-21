@@ -1,2 +1,2 @@
 # ctm-catalog
-catalog of apps to continuous testing machine 
+Catalog continuous testing machine applications
