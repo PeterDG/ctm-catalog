@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+*/target
+*.iml
+*.jar
+*.war
+/.idea/
+*.iws
+*.ipr
+/target
+*.csv
+*.7z
+*.zip
