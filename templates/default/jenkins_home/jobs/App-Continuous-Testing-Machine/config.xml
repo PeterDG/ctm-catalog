@@ -30,7 +30,7 @@
       <jenkins.branch.BranchSource>
         <source class="jenkins.plugins.git.GitSCMSource" plugin="git@3.0.5">
           <id>f4f48fc3-a938-4d7d-9539-78902a958dfb</id>
-          <remote>http://192.168.243.3/automation/detectta-automation.git</remote>
+          <remote>AUTOMATION_REPOSITORY_URL</remote>
           <credentialsId></credentialsId>
           <includes>*</includes>
           <excludes></excludes>

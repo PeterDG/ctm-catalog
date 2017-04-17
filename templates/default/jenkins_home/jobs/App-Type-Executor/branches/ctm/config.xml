@@ -14,7 +14,7 @@
             <hudson.plugins.git.UserRemoteConfig>
               <name>origin</name>
               <refspec>+refs/heads/*:refs/remotes/origin/*</refspec>
-              <url>http://192.168.243.3/automation/detectta-automation.git</url>
+              <url>AUTOMATION_REPOSITORY_URL</url>
             </hudson.plugins.git.UserRemoteConfig>
           </userRemoteConfigs>
           <branches class="singleton-list">
