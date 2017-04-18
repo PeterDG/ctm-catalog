@@ -6,7 +6,7 @@
       <branch plugin="branch-api@2.0.6">
         <sourceId>72444dd9-6cf9-4eee-b4a4-28981d6032fa</sourceId>
         <head plugin="scm-api@2.0.7">
-          <name>ctm</name>
+          <name>AUTOMATION_REPOSITORY_BRANCH</name>
         </head>
         <scm class="hudson.plugins.git.GitSCM" plugin="git@3.0.5">
           <configVersion>2</configVersion>
@@ -19,7 +19,7 @@
           </userRemoteConfigs>
           <branches class="singleton-list">
             <hudson.plugins.git.BranchSpec>
-              <name>ctm</name>
+              <name>AUTOMATION_REPOSITORY_BRANCH</name>
             </hudson.plugins.git.BranchSpec>
           </branches>
           <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
