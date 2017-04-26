@@ -1,35 +1,47 @@
-version: '3'
+version: '2'
 services:
   machine:
-    image: "${MACHINE_IMAGE}"
+    image: ${MACHINE_IMAGE}
     network_mode: "bridge"
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: application-maven-data, application-git-data, application-docker-data
     environment:
-      TZ: "${TIMEZONE}"
-      INSECURE_REGISTRIES: "${INSECURE_REGISTRIES}"
+      TZ: ${TIMEZONE}
+      INSECURE_REGISTRIES: '${INSECURE_REGISTRIES}'
     ports:
     - "${PORT}:22"
     privileged: true
     command: '--storage-driver=overlay'
-    volumes:
-      - docker-images:/var/lib/docker
-      - data-maven:/root/.m2
-      - data-git:/usr/jenkins
-  machine-maven-data:
-    image: "${MAVEN_IMAGE}"
+    volumes_from:
+      - application-maven-data
+      - application-git-data
+      - application-docker-data
+  application-maven-data:
+    image: ${MAVEN_IMAGE}
+    labels:
+        io.rancher.container.pull_image: always
+        io.rancher.container.hostname_override: container_name
+        io.rancher.container.start_once: true
     network_mode: "none"
     volumes:
-      - data-maven:/root/.m2
-  machine-git-data:
-    image: "${GIT_IMAGE}"
+      - data-maven-${PORT}:/root/.m2
+  application-git-data:
+    image: ${GIT_IMAGE}
+    labels:
+        io.rancher.container.pull_image: always
+        io.rancher.container.hostname_override: container_name
+        io.rancher.container.start_once: true
     network_mode: "none"
     volumes:
-      - data-git:/usr/jenkins
-  machine-docker-data:
-    image: "${DOCKER_IMAGE}"
+      - data-git-${PORT}:/usr/jenkins
+  application-docker-data:
+    image: ${DOCKER_IMAGE}
+    labels:
+        io.rancher.container.pull_image: always
+        io.rancher.container.hostname_override: container_name
+        io.rancher.container.start_once: true
     network_mode: "none"
     volumes:
-      - docker-images:/var/lib/docker
-volumes:
-  docker-images:
-  data-maven:
-  data-git:
+      - docker-images-${PORT}:/var/lib/docker
