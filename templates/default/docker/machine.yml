@@ -4,7 +4,7 @@ services:
     image: "${MACHINE_IMAGE}"
     network_mode: "bridge"
     environment:
-      TZ: "${TIMEZONE"}
+      TZ: "${TIMEZONE}"
       INSECURE_REGISTRIES: "${INSECURE_REGISTRIES}"
     ports:
     - "${PORT}:22"
