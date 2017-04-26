@@ -1,0 +1,35 @@
+version: '3'
+services:
+  machine:
+    image: "${MACHINE_IMAGE}"
+    network_mode: "bridge"
+    environment:
+      TZ: "${TIMEZONE"}
+      INSECURE_REGISTRIES: "${INSECURE_REGISTRIES}"
+    ports:
+    - "${PORT}:22"
+    privileged: true
+    command: '--storage-driver=overlay'
+    volumes:
+      - docker-images:/var/lib/docker
+      - data-maven:/root/.m2
+      - data-git:/usr/jenkins
+  machine-maven-data:
+    image: "${MAVEN_IMAGE}"
+    network_mode: "none"
+    volumes:
+      - data-maven:/root/.m2
+  machine-git-data:
+    image: "${GIT_IMAGE}"
+    network_mode: "none"
+    volumes:
+      - data-git:/usr/jenkins
+  machine-docker-data:
+    image: "${DOCKER_IMAGE}"
+    network_mode: "none"
+    volumes:
+      - docker-images:/var/lib/docker
+volumes:
+  docker-images:
+  data-maven:
+  data-git:
