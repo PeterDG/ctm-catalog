@@ -18,6 +18,8 @@ services:
       - application-maven-data
       - application-git-data
       - application-docker-data
+    volumes:
+      - /usr/local/bin/automation:/usr/local/bin/automation
   application-maven-data:
     image: ${MAVEN_IMAGE}
     labels:
