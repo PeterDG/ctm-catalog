@@ -1,0 +1,18 @@
+<slave>
+    <name>docker</name>
+    <description>CTM Node</description>
+    <remoteFS>${REMOTE_JENKINS_ROUTE}</remoteFS>
+    <numExecutors>${NUMBER_EXECUTORS}</numExecutors>
+    <mode>NORMAL</mode>
+    <retentionStrategy class="hudson.slaves.RetentionStrategy"/>
+    <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.11">
+        <host>${HOST}</host>
+        <port>${PORT}</port>
+        <credentialsId>${CREDENTIALS_ID}</credentialsId>
+        <maxNumRetries>${MAX_NUM_RETRIES}</maxNumRetries>
+        <retryWaitTime>${RETRY_WAIT_TIME}</retryWaitTime>
+        <sshHostKeyVerificationStrategy class="hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy"/>
+    </launcher>
+    <label></label>
+    <nodeProperties/>
+</slave>
