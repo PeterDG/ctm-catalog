@@ -16,3 +16,4 @@ services:
     command: '--storage-driver=overlay'
     volumes:
       - /usr/local/bin/automation:/usr/local/bin/automation
+      - /var/jenkins_home:/var/jenkins_home
