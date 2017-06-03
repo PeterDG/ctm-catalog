@@ -10,6 +10,7 @@ services:
     environment:
       TZ: ${TIMEZONE}
       INSECURE_REGISTRIES: '${INSECURE_REGISTRIES}'
+      CTM_ENGINE: '/usr/local/bin/automation/ctm-engine'
     ports:
     - "${PORT}:22"
     privileged: true
